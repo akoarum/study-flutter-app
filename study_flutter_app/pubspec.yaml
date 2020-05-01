@@ -25,8 +25,10 @@ dependencies:
   cupertino_icons: ^0.1.2
 
   rxdart:
+  provider:
   sqflite:
   path:
+  uuid:
 
 dev_dependencies:
   flutter_test:
