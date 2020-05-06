@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:study_flutter_app/src/blocs/todo_bloc.dart';
 import 'package:study_flutter_app/src/components/todo_empty.dart';
+import 'package:study_flutter_app/src/models/todo.dart';
 
 class TodoList extends StatelessWidget {
   @override
@@ -25,14 +26,16 @@ class TodoList extends StatelessWidget {
                   Dismissible(
                     key: Key(todo.id),
                     onDismissed: (direction) {
-                      _bloc.removeTodo.add(RemoveTodo(todo.id));
+                      _bloc.removeTodo.add(todo);
                     },
                     background: Container(color: Colors.red),
                     child: ListTile(
                       title: Text(todo.text),
                       subtitle: Text(todo.isCompleted ? 'Done' : 'Not yet'),
                       onTap: () {
-                        _bloc.updateCompleted.add(UpdateCompleted(todo.id, !todo.isCompleted));
+                        _bloc.updateCompleted.add(
+                          Todo(todo.id, todo.text, !todo.isCompleted, todo.createdAt)
+                        );
                       },
                     ),
                   ),

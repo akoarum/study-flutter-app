@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 import 'package:provider/provider.dart';
 import 'package:study_flutter_app/src/blocs/todo_bloc.dart';
+import 'package:study_flutter_app/src/models/todo.dart';
 
 var uuid = Uuid();
 
@@ -15,7 +16,7 @@ class _TodoFormState extends State<TodoForm> {
   TextEditingController _textController = new TextEditingController();
 
   void addTodo(TodoBloc _bloc) {
-    _bloc.addTodo.add(AddTodo(uuid.v4(), _textController.text));
+    _bloc.addTodo.add(Todo(uuid.v4(), _textController.text, false, DateTime.now()));
     _textController.clear();
 
     setState(() {

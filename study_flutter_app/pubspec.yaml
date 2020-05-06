@@ -28,6 +28,7 @@ dependencies:
   provider:
   sqflite:
   path:
+  path_provider:
   uuid:
 
 dev_dependencies:
